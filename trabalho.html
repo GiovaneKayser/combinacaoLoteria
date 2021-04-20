@@ -1,0 +1,39 @@
+<style>
+
+</style>
+
+<div class="combinacoes" id="combinacoes">
+
+</div>
+
+<script>
+const linha = document.getElementById("combinacoes");
+function geraCombincao() {
+    let combinacoes = []
+    for (let x = 1; x < 51; x++) {
+        var combinacao =[] ;
+        combinacao[0] = x;
+        for (let i = 1; i < 5; i++) {
+            for (let y = x+1; y < 51; y++) {
+                if(y !== combinacao[i-1]){
+                    console.log(`combinacao`, combinacao)
+                    combinacao[i] = y
+                    const comb = Object.assign([],combinacao)
+                    let tag = document.createElement(`p`)//<p>${comb}</p><br/>
+                    let text = document.createTextNode(`${comb}`);
+                    tag.appendChild(text);
+                    let element = document.getElementById("combinacoes")
+                    element.appendChild(tag);
+                    combinacoes.push(comb);
+                }else{
+                    combinacao[i] = x+1;
+                    console.log(`combinacao[i]`, combinacao[i])
+                }
+            }
+            
+        }
+    }
+    return combinacoes
+}
+geraCombincao()
+</script>
